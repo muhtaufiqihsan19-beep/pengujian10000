@@ -1,0 +1,31 @@
+FORMAT LAPORAN HASIL (HANYA TEMPLATE — BELUM ADA ANGKA HASIL EKSPERIMEN)
+
+Ketika ./run_all.sh berhasil dijalankan, program otomatis membuat:
+  <folder-output>/LAPORAN_WAKTU_ROTASI_10000.txt
+
+1. RINGKASAN DURASI (detik)
+   - Generate dan enkripsi 10.000 file ke pk1
+   - Verifikasi awal memakai sk1
+   - Keygen pk2/sk2
+   - Rotasi seluruh DEK (termasuk I/O)
+   - Verifikasi akhir memakai sk2
+   - Verifikasi sebelum pemusnahan key v1
+   - Audit akhir
+   - TOTAL WALL-CLOCK PIPELINE
+
+2. AGREGAT (ms)
+   - Jumlah, mean, median, P95, P99 untuk setiap langkah
+
+3. TABEL PER FILE (10.000 BARIS)
+   NO | DOCUMENT_ID | SK1-KEM | SK1-X25519 | SK1-KDF | SK1-UNWRAP |
+   BUKA-SK1 | PK2-KEM | PK2-X25519 | PK2-KDF | PK2-WRAP |
+   BUNGKUS-PK2 | REWRAP-SK1-PK2 | VERIFY-SK2 | TOTAL-KRIPTO
+
+4. VERIFIKASI KEAMANAN
+   - Seluruh file plaintext cocok dengan hash original
+   - Seluruh ciphertext file tetap identik
+   - Kunci v1 dihapus secara logis
+   - Kunci v2 masih tersedia
+
+NOTE: TIDAK ADA PROSES BENCHMARK ATAU GENERASI 10.000 FILE YANG
+      DIJALANKAN SAAT BUNDLE INI DIBUAT.
